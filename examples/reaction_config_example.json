@@ -1,0 +1,63 @@
+{
+  "tolerance": 0.09,
+  "calib_flow": 0.06,
+  "experiment_flow": 0.06,
+
+  "slope_calibration": 1064289.148,
+  "linear_co_calibration": 136790.506,
+
+  "reactant_name": "Guaiacol",
+  "reactant_rt": 20.736,
+  "reactant_formula": "C7H8O2",
+  "reactant_molar_mass": 124.139,
+  "reactant_nC": 7,
+  "reactant_wt": 10.0,
+
+  "solvents": [
+    {
+      "name": "Decalin trans",
+      "rt": 20.062,
+      "molar_mass": 138.23,
+      "wt_fraction": 0.36
+    },
+    {
+      "name": "Decalin cis",
+      "rt": 21.208,
+      "molar_mass": 138.23,
+      "wt_fraction": 0.54
+    }
+  ],
+
+  "key_products": [
+    "Phenol",
+    "o-Cresol",
+    "2,5-Dimethylphenol",
+    "Anisole",
+    "Methanol",
+    "Formaldehyde"
+  ],
+
+  "groups": {
+    "Other methylphenols": [
+      "2,3,4,5,6-Pentamethylphenol",
+      "2,3,4,6-Tetramethylphenol",
+      "2,3,6-Trimethylphenol",
+      "2,3-Dimethylphenol",
+      "2,4,6-Trimethylphenol",
+      "3,4,5-Trimethylphenol",
+      "3,4-Dimethylphenol"
+    ],
+    "Minor compounds": [
+      "Ethanol",
+      "Cyclohexanol",
+      "o-Methylanisole",
+      "m-Methylanisole"
+    ],
+    "Fully deoxygenated": [
+      "Toluene",
+      "Pentamethylbenzene",
+      "Hexamethylbenzene",
+      "Cyclohexane"
+    ]
+  }
+}

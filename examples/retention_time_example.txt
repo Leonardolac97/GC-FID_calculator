@@ -1,0 +1,25 @@
+9.386	Formaldehyde
+9.520	Methanol
+9.764	Ethanol 
+10.989	Cyclohexane 
+12.633	Toluene 
+14.977	Cyclohexanone/cyclohexanol
+16.197	Anisole
+17.664	Phenol
+18.648	o-Methylanisole 
+18.923	m-Methylanisole
+19.689	o-Cresol
+20.062	Decalin trans
+20.736	Guaiacol
+21.208	Decalin cis
+22.072	2,5 -Dimethylphenol
+22.795	2,3-Dimethylphenol
+22.952	Creosol
+23.148	3,4-Dimethylphenol
+24.191	2,3,6-Trimethylphenol
+24.990	2,4,6-Trimethylphenol
+25.469	Pentamethylbenzene
+25.722	3,4,5-Trimethylphenol 
+27.064	2,3,4,6-Tetramethylphenol 
+29.098	Hexamethylbenzene
+30.608	2,3,4,5,6-Pentamethylphenol

@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+title: "GC-FID HDO Calculator GUI"
+abstract: >-
+  A PyQt6 desktop application for extracting Front Signal peak tables from
+  GC-FID PDF reports, filtering compounds by retention time, applying
+  calibration curves, and generating conversion, selectivity, Pearson
+  correlation, and carbon recovery outputs for hydrodeoxygenation datasets.
+type: software
+authors:
+  - family-names: "Almeida de Campos"
+    given-names: "Leonardo"
+    affiliation: "Karlsruhe Institute of Technology (KIT)"
+repository-code: "https://github.com/<username>/gc-fid-hdo-calculator"
+license: "MIT"
+version: "0.1.0"
+date-released: "2026-04-09"
+keywords:
+  - GC-FID
+  - hydrodeoxygenation
+  - PyQt6
+  - catalysis
+  - reaction engineering
+  - data analysis
+preferred-citation:
+  type: software
+  authors:
+    - family-names: "Almeida de Campos"
+      given-names: "Leonardo"
+  title: "GC-FID HDO Calculator GUI"
+  version: "0.1.0"
+  date-released: "2026-04-09"
