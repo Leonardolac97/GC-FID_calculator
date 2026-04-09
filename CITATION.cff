@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it using the metadata below."
 title: "GC-FID HDO Calculator GUI"
-abstract: >-
+abstract:
   A PyQt6 desktop application for extracting Front Signal peak tables from
   GC-FID PDF reports, filtering compounds by retention time, applying
   calibration curves, and generating conversion, selectivity, Pearson
