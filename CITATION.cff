@@ -11,9 +11,11 @@ authors:
   - family-names: "Almeida de Campos"
     given-names: "Leonardo"
     affiliation: "Karlsruhe Institute of Technology (KIT)"
-repository-code: "https://github.com/<username>/gc-fid-hdo-calculator"
+repository-code: "https://github.com/Leonardolac97/GC-FID_calculator"
 license: "MIT"
-version: "0.1.0"
+version: "1.0.0"
+date-released: 2026-04-09
+doi: "https://doi.org/10.xxxxxxx/xxxxxxxxxxxx"
 date-released: "2026-04-09"
 keywords:
   - GC-FID
@@ -22,11 +24,3 @@ keywords:
   - catalysis
   - reaction engineering
   - data analysis
-preferred-citation:
-  type: software
-  authors:
-    - family-names: "Almeida de Campos"
-      given-names: "Leonardo"
-  title: "GC-FID HDO Calculator GUI"
-  version: "0.1.0"
-  date-released: "2026-04-09"
