@@ -1,6 +1,6 @@
-# GC-FID HDO Calculator GUI
+# GC-FID Calculator GUI
 
-A PyQt6 desktop application for extracting peak tables from Agilent-style GC-FID PDF reports, filtering compounds by retention time, estimating reactant conversion, applying external calibration files, and generating time-on-stream plots and CSV summaries for hydrodeoxygenation (HDO) datasets.
+A PyQt6 desktop application for extracting peak tables from Agilent-style GC-FID PDF reports, filtering compounds by retention time, estimating reactant conversion, applying external calibration files, and generating time-on-stream plots and CSV summaries for reaction datasets.
 
 This tool reads the **Front Signal Results** section from GC report PDFs, filters peaks against a user-defined retention-time table, and computes derived quantities such as:
 
@@ -23,7 +23,7 @@ The current GUI contains these tabs:
 6. **Pearson correlation chart**
 7. **Carbon balance**
 
-The workflow, dependencies, default reaction settings, and file-loading behavior are defined directly in `GC_FID_HDO_calculator.py`. The script imports `pandas`, `PyMuPDF` (`fitz`), `numpy`, `periodictable`, `seaborn`, `matplotlib`, `scipy`, and `PyQt6`. The GUI also expects reaction settings to be loadable from JSON, retention tables from CSV/TXT, and calibration tables from CSV/TXT. fileciteturn2file0
+The workflow, dependencies, default reaction settings, and file-loading behavior are defined directly in `GC_FID_calculator.py`. The script imports `pandas`, `PyMuPDF` (`fitz`), `numpy`, `periodictable`, `seaborn`, `matplotlib`, `scipy`, and `PyQt6`. The GUI also expects reaction settings to be loadable from JSON, retention tables from CSV/TXT, and calibration tables from CSV/TXT. 
 
 ---
 
@@ -39,7 +39,7 @@ The workflow, dependencies, default reaction settings, and file-loading behavior
 - Build Pearson correlation heatmaps from normalized molar fractions
 - Compute carbon recovery and export summaries automatically
 
-The script creates `CSV_Files` and `Plot_Summary` folders next to the imported PDF files, and writes outputs such as `complete.csv`, `filtered.csv`, `conversion.csv`, `calibrated.csv`, `selectivity_group_results.csv`, `carbon_recovery.csv`, plus several PNG figures. fileciteturn2file0
+The script creates `CSV_Files` and `Plot_Summary` folders next to the imported PDF files, and writes outputs such as `complete.csv`, `filtered.csv`, `conversion.csv`, `calibrated.csv`, `selectivity_group_results.csv`, `carbon_recovery.csv`, plus several PNG figures. 
 
 ---
 
@@ -49,8 +49,8 @@ The script creates `CSV_Files` and `Plot_Summary` folders next to the imported P
 
 ```bash
 conda env create -f environment.yml
-conda activate gc-fid-hdo-gui
-python GC_FID_HDO_calculator.py
+conda activate gc-fid-gui
+python GC_FID_calculator.py
 ```
 
 ### Option 2 — pip + virtual environment
@@ -65,7 +65,7 @@ python -m venv .venv
 .venv\Scripts\activate
 pip install --upgrade pip
 pip install -r requirements.txt
-python GC_FID_HDO_calculator.py
+python GC_FID_calculator.py
 ```
 
 #### macOS / Linux
@@ -74,7 +74,7 @@ python GC_FID_HDO_calculator.py
 source .venv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
-python GC_FID_HDO_calculator.py
+python GC_FID_calculator.py
 ```
 
 ---
@@ -85,14 +85,14 @@ python GC_FID_HDO_calculator.py
 - Desktop environment capable of running PyQt6
 - GC-FID PDF reports that contain a parsable **Front Signal Results** section
 
-The script uses these libraries directly in the source code: `pandas`, `fitz` / PyMuPDF, `numpy`, `periodictable`, `seaborn`, `json`, `matplotlib`, `scipy.stats`, and `PyQt6`. fileciteturn2file0
+The script uses these libraries directly in the source code: `pandas`, `fitz` / PyMuPDF, `numpy`, `periodictable`, `seaborn`, `json`, `matplotlib`, `scipy.stats`, and `PyQt6`. 
 
 ---
 
 ## Running the GUI
 
 ```bash
-python GC_FID_HDO_calculator.py
+python GC_FID_calculator.py
 ```
 
 When the GUI opens, the usual order is:
@@ -105,7 +105,7 @@ When the GUI opens, the usual order is:
 6. Click **Apply Calibration and Save CSV**
 7. Use the other tabs to generate plots and summaries
 
-The script starts a `QApplication`, opens the `RetentionTimeFilterApp` main window, and runs the GUI event loop directly from `main()`. fileciteturn2file0
+The script starts a `QApplication`, opens the `RetentionTimeFilterApp` main window, and runs the GUI event loop directly from `main()`. 
 
 ---
 
@@ -123,9 +123,9 @@ The application imports one or more PDF reports and extracts the **Front Signal 
 - `Height`
 - `Height %`
 
-This is hard-coded in the PDF parser and the script builds a dataframe with exactly those columns after extraction. fileciteturn2file0
+This is hard-coded in the PDF parser and the script builds a dataframe with exactly those columns after extraction. 
 
-A sample uploaded PDF shows the expected structure under **Front Signal Results**, with rows such as retention time, area, area percent, height, and height percent. fileciteturn1file6
+A sample uploaded PDF shows the expected structure under **Front Signal Results**, with rows such as retention time, area, area percent, height, and height percent. 
 
 **Important assumptions about the PDF filenames:**
 
@@ -139,12 +139,15 @@ A sample uploaded PDF shows the expected structure under **Front Signal Results*
 2.pdf
 4.pdf
 8.pdf
+.
+.
+.
 24.pdf
 ```
 
-or at least contain a clean numeric part that can be interpreted as the time on stream. The import routine sorts files using the numeric part extracted from the filename. fileciteturn2file0
+or at least contain a clean numeric part that can be interpreted as the time on stream. The import routine sorts files using the numeric part extracted from the filename. 
 
-If filenames are not numeric enough, plots that depend on `Sample Name.astype(float)` may fail or behave unpredictably. That limitation comes from the current implementation. fileciteturn2file0
+If filenames are not numeric enough, plots that depend on `Sample Name.astype(float)` may fail or behave unpredictably. That limitation comes from the current implementation. 
 
 ### 2. Retention time file
 
@@ -168,14 +171,14 @@ Example:
 21.208	Decalin cis
 ```
 
-The current example file follows exactly this format. fileciteturn1file10
+The current example file follows exactly this format. 
 
 **CSV format**
 - must contain the columns:
   - `Retention Time`
   - `Compound`
 
-If those column names are missing, the GUI raises an error while loading the table. fileciteturn2file0
+If those column names are missing, the GUI raises an error while loading the table. 
 
 ### 3. Calibration file
 
@@ -201,7 +204,7 @@ Example rows from the uploaded file:
 30.608	2,3,4,5,6-Pentamethylphenol	C11H16O	1596360.094	20749.8884
 ```
 
-The example calibration file follows that exact structure. fileciteturn1file9
+The example calibration file follows that exact structure. 
 
 **CSV format**
 - must contain the columns:
@@ -211,7 +214,7 @@ The example calibration file follows that exact structure. fileciteturn1fi
   - `Slope`
   - `Intercept`
 
-If any of those required column names are missing, calibration loading fails. fileciteturn2file0
+If any of those required column names are missing, calibration loading fails. 
 
 ### 4. Reaction configuration JSON
 
@@ -234,7 +237,7 @@ The current JSON structure supports:
 - `key_products`
 - `groups`
 
-The uploaded example JSON includes two solvent entries, each with `name`, `rt`, `molar_mass`, and `wt_fraction`. The code reads `solvents` directly from JSON, so multiple solvents are supported as long as each entry follows that dictionary structure. fileciteturn1file4
+The uploaded example JSON includes two solvent entries, each with `name`, `rt`, `molar_mass`, and `wt_fraction`. The code reads `solvents` directly from JSON, so multiple solvents are supported as long as each entry follows that dictionary structure. 
 
 Example:
 
@@ -272,7 +275,7 @@ The current implementation also checks that:
 reactant_wt/100 + sum(solvent wt_fraction) ≈ 1.0
 ```
 
-If that total is inconsistent, calibration/export is stopped with a warning. fileciteturn2file0
+If that total is inconsistent, calibration/export is stopped with a warning. 
 
 ---
 
@@ -290,7 +293,7 @@ After importing PDFs, the script creates two folders next to the PDF files:
 └── Plot_Summary/
 ```
 
-This behavior is hard-coded in `import_pdfs()`, which creates `CSV_Files` and `Plot_Summary` inside the folder containing the imported PDFs. fileciteturn2file0
+This behavior is hard-coded in `import_pdfs()`, which creates `CSV_Files` and `Plot_Summary` inside the folder containing the imported PDFs. 
 
 ### Folder diagram after a typical full run
 
@@ -320,30 +323,30 @@ project_folder/
     └── carbon_plot.png
 ```
 
-These filenames are explicitly written by the script when saving CSV and PNG outputs. fileciteturn2file0
+These filenames are explicitly written by the script when saving CSV and PNG outputs. 
 
 ### What each output contains
 
 #### `CSV_Files/complete.csv`
-All extracted peaks from the imported PDFs before retention-time filtering. fileciteturn2file0
+All extracted peaks from the imported PDFs before retention-time filtering. 
 
 #### `CSV_Files/filtered.csv`
-Only peaks matching the retention table within the configured tolerance, plus reactant wt.% and reactant conversion columns where applicable. fileciteturn2file0
+Only peaks matching the retention table within the configured tolerance, plus reactant wt.% and reactant conversion columns where applicable. 
 
 #### `CSV_Files/conversion.csv`
-Mean reactant conversion by sample name / time on stream. fileciteturn2file0
+Mean reactant conversion by sample name / time on stream. 
 
 #### `CSV_Files/calibrated.csv`
-Main processed dataset containing original filtered data plus calibration-derived columns such as `wt%`, `Molecular formula`, `MW`, `g/min`, `mol/min`, `mol%`, `mol%_without_solv`, `mol%_normalized`, `gC/min`, and `Carbon recovery (%)`. fileciteturn2file0
+Main processed dataset containing original filtered data plus calibration-derived columns such as `wt%`, `Molecular formula`, `MW`, `g/min`, `mol/min`, `mol%`, `mol%_without_solv`, `mol%_normalized`, `gC/min`, and `Carbon recovery (%)`. 
 
 #### `CSV_Files/selectivity_group_results.csv`
-Grouped selectivity values over time on stream. fileciteturn2file0
+Grouped selectivity values over time on stream. 
 
 #### `CSV_Files/selectivity_group_avg_results.csv`
-Average grouped selectivity values over the full run. fileciteturn2file0
+Average grouped selectivity values over the full run. 
 
 #### `CSV_Files/carbon_recovery.csv`
-Carbon recovery summary by sample name / time on stream. fileciteturn2file0
+Carbon recovery summary by sample name / time on stream. 
 
 #### `Plot_Summary/*.png`
 Automatically exported figures generated from the GUI tabs. Current hard-coded filenames are:
@@ -354,7 +357,7 @@ Automatically exported figures generated from the GUI tabs. Current hard-coded f
 - `trend_selectivity_group_plot.png`
 - `avg_selectivity_group_plot.png`
 - `pearson_plot.png`
-- `carbon_plot.png` fileciteturn2file0
+- `carbon_plot.png` 
 
 ---
 
@@ -363,32 +366,31 @@ Automatically exported figures generated from the GUI tabs. Current hard-coded f
 A clean repository structure for publication could look like this:
 
 ```text
-gc-fid-hdo-calculator/
-├── GC_FID_HDO_calculator.py
+gc-fid--calculator/
+├── GC_FID_calculator.py
 ├── README.md
 ├── LICENSE
 ├── CITATION.cff
 ├── requirements.txt
 ├── environment.yml
 ├── .gitignore
-├── examples/
-│   ├── retention_time_example.txt
-│   ├── calibration_file_example.txt
-│   ├── reaction_config_example.json
-│   └── sample_report_excerpt.pdf
-└── docs/
-    └── screenshots/
+└──  examples/
+     ├── retention_time_example.txt
+     ├── calibration_file_example.txt
+     ├── reaction_config_example.json
+     └── sample_report_excerpt.pdf
+
 ```
 
 ---
 
 ## Known limitations
 
-- The parser currently reads only the **Front Signal Results** block from the PDF. It does not use Back Signal or Aux Detector data. fileciteturn2file0
-- The application assumes sample names can be converted to numeric time-on-stream values in several plotting functions. fileciteturn2file0
-- The code is currently a single-file GUI application with some experiment-specific grouping logic defined directly in the script through `self.key_products` and `self.groups`. fileciteturn2file0
-- Pearson plots require a successful calibration step because they depend on `latest_calibrated_df` and `mol%_normalized`. fileciteturn2file0
-- The script imports `seaborn` specifically for the Pearson heatmap implementation. fileciteturn2file0
+- The parser currently reads only the **Front Signal Results** block from the PDF. It does not use Back Signal or Aux Detector data. 
+- The application assumes sample names can be converted to numeric time-on-stream values in several plotting functions. 
+- The code is currently a single-file GUI application with some experiment-specific grouping logic defined directly in the script through `self.key_products` and `self.groups`. 
+- Pearson plots require a successful calibration step because they depend on `latest_calibrated_df` and `mol%_normalized`. 
+- The script imports `seaborn` specifically for the Pearson heatmap implementation. 
 
 ---
 
@@ -396,11 +398,6 @@ gc-fid-hdo-calculator/
 
 Please cite the software using the metadata in `CITATION.cff`.
 
-A suggested manuscript-style citation is:
-
-> Almeida de Campos, L. *GC-FID HDO Calculator GUI: a PyQt-based workflow for extraction, calibration, and time-on-stream analysis of GC-FID HDO datasets*.
-
-Update the DOI, version, repository URL, and release date in `CITATION.cff` once the repository is public and a permanent archive has been created.
 
 ---
 
@@ -408,10 +405,4 @@ Update the DOI, version, repository URL, and release date in `CITATION.cff` once
 
 This repository currently includes an **MIT License** as a simple permissive default for code sharing.
 
-If you prefer a more attribution-focused academic license or need institutional constraints, revise `LICENSE` before publishing the repository.
-
 ---
-
-## Acknowledgment
-
-This project was developed by **Leonardo Almeida de Campos** at **Karlsruhe Institute of Technology (KIT) – ITCP**. The script header also notes AI-assisted development support. fileciteturn2file0
