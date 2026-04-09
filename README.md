@@ -366,7 +366,7 @@ Automatically exported figures generated from the GUI tabs. Current hard-coded f
 A clean repository structure for publication could look like this:
 
 ```text
-gc-fid--calculator/
+gc-fid-calculator/
 ├── GC_FID_calculator.py
 ├── README.md
 ├── LICENSE
